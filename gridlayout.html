@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grid Layout</title>
+    <style>
+      main {
+        width: 1200px;
+        height: 400px;
+        background-color: #0fd75f;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: 150px 150px;
+        gap: 20px;
+      }
+
+      .box:nth-child(odd) {
+        background-color: #3b0cb4;
+        height: 300px;
+      }
+      .box:nth-child(even) {
+        background-color: #6d0808;
+        height: 300px;
+      }
+
+      @media screen and (min-width: 375px) and (max-width: 768px) {
+        main {
+          width: 100%;
+          height: auto;
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="box">1</div>
+      <div class="box">2</div>
+      <div class="box">3</div>
+      <div class="box">4</div>
+    </main>
+  </body>
+</html>
