@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flipkart Clone</title>
+    <style>
+        /* --- General Setup --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
+        body { background-color: #f1f3f6; } /* Flipkart ka Grey Background */
+
+        /* --- 1. Blue Navbar --- */
+        .navbar {
+            background-color: #2874f0; /* Flipkart Blue */
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,.2);
+        }
+
+        .nav-container {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            gap: 20px;
+        }
+
+        .logo {
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+            font-style: italic;
+            cursor: pointer;
+        }
+        .logo span { color: #f9e107; font-size: 12px; display: block; line-height: 10px; }
+
+        /* Search Bar */
+        .search-box {
+            background: white;
+            width: 400px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            border-radius: 2px;
+            padding: 0 10px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+        .search-box input {
+            border: none;
+            outline: none;
+            width: 100%;
+            font-size: 14px;
+        }
+        .search-btn { color: #2874f0; cursor: pointer; font-weight: bold; }
+
+        /* Nav Buttons */
+        .nav-btn {
+            background: white;
+            color: #2874f0;
+            padding: 5px 20px;
+            font-weight: bold;
+            border-radius: 2px;
+            cursor: pointer;
+            border: 1px solid white;
+        }
+        .nav-link { color: white; font-weight: bold; margin-left: 20px; cursor: pointer; }
+
+        /* --- 2. Categories Row (White Strip) --- */
+        .categories {
+            background: white;
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+            box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+            margin-bottom: 10px;
+        }
+        .cat-item {
+            text-align: center;
+            margin: 0 20px;
+            cursor: pointer;
+        }
+        .cat-item img { width: 64px; height: 64px; object-fit: contain; }
+        .cat-item p { font-size: 14px; font-weight: bold; color: #333; margin-top: 5px; }
+
+        /* --- 3. Big Banner Carousel --- */
+        .banner {
+            width: 98%;
+            max-width: 1200px;
+            margin: 10px auto;
+        }
+        .banner img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            cursor: pointer;
+        }
+
+        /* --- 4. Product Section (Horizontal Scroll) --- */
+        .section-box {
+            background: white;
+            width: 98%;
+            max-width: 1200px;
+            margin: 10px auto;
+            padding: 15px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #f0f0f0;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        .section-title { font-size: 20px; font-weight: 600; }
+        .view-all-btn { background: #2874f0; color: white; padding: 8px 15px; border: none; border-radius: 2px; cursor: pointer; }
+
+        /* Horizontal Scrolling Container */
+        .product-row {
+            display: flex;
+            overflow-x: auto; /* Side scrolling enable */
+            gap: 20px;
+            padding-bottom: 10px;
+            scrollbar-width: thin; /* Firefox ke liye patla scrollbar */
+        }
+        
+        /* Product Card Styling */
+        .product-card {
+            min-width: 200px; /* Fixed width taaki scroll ho */
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .product-card:hover { transform: scale(1.02); }
+        
+        .product-card img {
+            height: 150px;
+            width: auto;
+            max-width: 100%;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+        .p-title { font-weight: 500; font-size: 14px; margin-bottom: 5px; }
+        .p-offer { color: #388e3c; font-size: 13px; font-weight: bold; } /* Green Offer Text */
+        .p-tag { color: #878787; font-size: 13px; }
+
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Flipkart <br><span>Plus+</span></div>
+            
+            <div class="search-box">
+                <input type="text" placeholder="Search for products, brands and more">
+                <span class="search-btn">🔍</span>
+            </div>
+
+            <button class="nav-btn">Login</button>
+            <div class="nav-link">Become a Seller</div>
+            <div class="nav-link">More ⌄</div>
+            <div class="nav-link">🛒 Cart</div>
+        </div>
+    </nav>
+
+    <div class="categories">
+        <div class="cat-item">
+            <img src="https://rukminim1.flixcart.com/flap/128/128/image/29327f40e9c4d26b.png?q=100" alt="Grocery">
+            <p>Grocery</p>
+        </div>
+        <div class="cat-item">
+            <img src="https://rukminim1.flixcart.com/flap/128/128/image/22fddf3c7da4c4f4.png?q=100" alt="Mobiles">
+            <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My E-Commerce Store</title>
+    <style>
+        /* --- CSS Styling Shuru --- */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        /* Product Grid Container */
+        .product-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive Layout */
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Product Card Design */
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            text-align: center;
+            padding-bottom: 20px;
+        }
+
+        .card:hover {
+            transform: translateY(-5px); /* Hover karne par upar uthega */
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+
+        /* Image Styling */
+        .card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-bottom: 1px solid #eee;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            margin: 15px 0 10px;
+            color: #222;
+        }
+
+        .price {
+            font-size: 1.1rem;
+            color: #e63946; /* Red color price */
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        /* --- CSS Khatam --- */
+    </style>
+</head>
+<body>
+
+    <h1>🛍️ Super Market Sale</h1>
+
+    <div class="product-container">
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1696446701796-da61225697cc?q=80&w=800&auto=format&fit=crop" alt="iPhone 15">
+            <h3>iPhone 15 Pro</h3>
+            <p class="price">₹1,34,900</p>
+            <button class="btn">Buy Now</button>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=800&auto=format&fit=crop" alt="T-Shirt">
+            <h3>Cotton White T-Shirt</h3>
+            <p class="price">₹499</p>
+            <button class="btn">Buy Now</button>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?q=80&w=800&auto=format&fit=crop" alt="Shirt">
+            <h3>Blue Casual Shirt</h3>
+            <p class="price">₹1,299</p>
+            <button class="btn">Buy Now</button>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800&auto=format&fit=crop" alt="Headphones">
+            <h3>Sony Headphones</h3>
+            <p class="price">₹14,990</p>
+            <button class="btn">Buy Now</button>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1579586337278-3befd40fd17a?q=80&w=800&auto=format&fit=crop" alt="Smart Watch">
+            <h3>Apple Watch Series 9</h3>
+            <p class="price">₹45,000</p>
+            <button class="btn">Buy Now</button>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=800&auto=format&fit=crop" alt="Sneakers">
+            <h3>Nike Sneakers</h3>
+            <p class="price">₹8,500</p>
+            <button class="btn">Buy Now</button>
+        </div>
+
+    </div>
+
+</body>
+</html>
