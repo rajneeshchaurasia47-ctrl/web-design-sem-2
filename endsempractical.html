@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sum of N Numbers</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 350px;
+            width: 100%;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 15px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>Sum of N Numbers</h2>
+    <p>Enter a number to calculate the sum from 1 to N.</p>
+    
+    <input type="number" id="userNumber" placeholder="Enter number (N)">
+    <button onclick="calculateSum()">Calculate Sum</button>
+
+    <!-- The result will be dynamically displayed here -->
+    <div id="result"></div>
+</div>
+
+<script>
+function calculateSum() {
+    
+    let n = document.getElementById("userNumber").value;
+    
+    
+    n = parseInt(n);
+    
+    
+    if (isNaN(n) || n <= 0) {
+        document.getElementById("result").innerHTML = "<span style='color: #dc3545;'>Please enter a valid positive number.</span>";
+        return;
+    }
+
+    let sum = 0;
+
+    
+    for (let i = 1; i <= n; i++) {
+        sum += i; // Shortcut for: sum = sum + i;
+    }
+
+    
+    document.getElementById("result").innerHTML = `The sum of numbers from 1 to ${n} is: <strong>${sum}</strong>`;
+}
+</script>
+
+</body>
+</html>
