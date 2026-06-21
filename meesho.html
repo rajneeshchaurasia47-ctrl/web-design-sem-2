@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meesho Online Shopping</title>
+    <style>
+        /* --- 1. SETTINGS & COLORS --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f0f0f0; /* Grey Background */
+            padding-bottom: 70px; /* Jagah niche button ke liye */
+        }
+
+        /* --- 2. HEADER (UPAR WALA HISSA) --- */
+        .header {
+            background-color: white;
+            padding: 10px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .logo {
+            color: #f43397; /* Meesho Pink Color */
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        .icons {
+            font-size: 22px;
+        }
+
+        .icons span {
+            margin-left: 15px;
+            cursor: pointer;
+        }
+
+        /* Search Bar */
+        .search-box {
+            display: flex;
+            align-items: center;
+            border: 1px solid #999;
+            border-radius: 4px;
+            padding: 8px;
+            background: white;
+        }
+
+        .search-box input {
+            border: none;
+            outline: none;
+            width: 100%;
+            margin-left: 10px;
+            font-size: 14px;
+        }
+
+        /* --- 3. CATEGORIES (ICONS) --- */
+        .categories {
+            display: flex;
+            overflow-x: auto; /* Scroll karne ke liye */
+            background: white;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .cat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 20px;
+            min-width: 60px;
+            font-size: 11px;
+            color: #333;
+        }
+
+        .cat-img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: 1px solid #fcebf2;
+            margin-bottom: 5px;
+            object-fit: cover;
+        }
+
+        /* --- 4. PRODUCTS LIST --- */
+        .title-text {
+            padding: 15px 10px 5px 10px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(165px, 1fr)); /* Auto adjust */
+            gap: 10px;
+            padding: 10px;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid #eee;
+            border-radius: 6px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .p-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .p-info {
+            padding: 10px;
+        }
+
+        .p-name {
+            font-size: 14px;
+            color: #666;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-bottom: 5px;
+        }
+
+        .price-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .off-text {
+            color: #038d63; /* Green Color */
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .free-del {
+            background: #f5f5f5;
+            color: #666;
+            font-size: 10px;
+            padding: 3px 8px;
+            border-radius: 10px;
+            display: inline-block;
+            margin-top: 5px;
+        }
+
+        .rating {
+            float: right;
+            background: #038d63;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* --- 5. BOTTOM NAVIGATION --- */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: white;
+            border-top: 1px solid #ddd;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            z-index: 200;
+        }
+
+        .nav-btn {
+            text-align: center;
+            font-size: 10px;
+            color: #666;
+            cursor: pointer;
+        }
+
+        .active { color: #f43397; }
+        .nav-icon { font-size: 20px; display: block; margin-bottom: 2px;}
+
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="header-top">
+            <div class="logo">meesho</div>
+            <div class="icons">
+                <span>♡</span>
+                <span>🛒</span>
+            </div>
+        </div>
+        <div class="search-box">
+            <span>🔍</span>
+            <input type="text" placeholder="Search by Keyword or Product ID">
+        </div>
+    </div>
+
+    <div class="categories">
+        <div class="cat-item"><img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=100" class="cat-img">Saree</div>
+        <div class="cat-item"><img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=100" class="cat-img">Watch</div>
+        <div class="cat-item"><img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=100" class="cat-img">Men</div>
+        <div class="cat-item"><img src="https://images.unsplash.com/photo-1542272454315-4c01d7abdf4a?w=100" class="cat-img">Jeans</div>
+        <div class="cat-item"><img src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=100" class="cat-img">Beauty</div>
+        <div class="cat-item"><img src="https://images.unsplash.com/photo-1584669215886-2a71f005b829?w=100" class="cat-img">Home</div>
+    </div>
+
+    <div class="title-text">Products For You</div>
+
+    <div class="product-grid">
