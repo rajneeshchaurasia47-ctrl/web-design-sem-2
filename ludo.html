@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ludo Clone - Mini Edition</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Ludo Project Board</h1>
+        
+        <!-- Status Panel -->
+        <div class="status-panel">
+            <p id="turn-indicator">Current Turn: <span id="current-player" class="player-red">Red</span></p>
+        </div>
+
+        <!-- Main Board Layout -->
+        <div class="ludo-board">
+            <!-- Red Home -->
+            <div class="home-zone red-home">
+                <div class="token red-token" id="red-token" onclick="moveToken('red')">R</div>
+            </div>
+            
+            <!-- Track / Path -->
+            <div class="path-zone">
+                <div class="cell" id="cell-1">1</div>
+                <div class="cell" id="cell-2">2</div>
+                <div class="cell" id="cell-3">3</div>
+                <div class="cell" id="cell-4">4</div>
+                <div class="cell" id="cell-5">5</div>
+                <div class="cell" id="cell-6">6</div>
+            </div>
+
+            <!-- Green Home -->
+            <div class="home-zone green-home">
+                <div class="token green-token" id="green-token" onclick="moveToken('green')">G</div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls">
+            <button id="dice-btn" onclick="rollDice()">Roll Dice</button>
+            <div id="dice-result">🎲 -</div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
