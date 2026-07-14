@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body {
     margin: 0;
     padding: 0;
@@ -28,4 +29,147 @@ img {
     float: right;
     margin-right: 20px;
     padding: 3px;
+=======
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.game-container {
+    text-align: center;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.status-panel {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.player-red {
+    color: #ff4d4d;
+}
+
+.player-green {
+    color: #2ecc71;
+}
+
+/* Board Layout */
+.ludo-board {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #34495e;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.home-zone {
+    width: 100px;
+    height: 100px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.red-home {
+    background-color: #ff4d4d;
+}
+
+.green-home {
+    background-color: #2ecc71;
+}
+
+.path-zone {
+    display: flex;
+    gap: 5px;
+}
+
+.cell {
+    width: 45px;
+    height: 45px;
+    background: white;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    position: relative;
+}
+
+/* Tokens with Smooth Transitions */
+.token {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), left 0.4s, top 0.4s;
+}
+
+.red-token {
+    background-color: #c0392b;
+    border: 2px solid white;
+}
+
+.green-token {
+    background-color: #27ae60;
+    border: 2px solid white;
+}
+
+/* Dice Animation Class */
+.dice-rolling {
+    animation: spin 0.5s linear;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+
+    50% {
+        transform: rotate(180deg) scale(1.2);
+    }
+
+    100% {
+        transform: rotate(360deg) scale(1);
+    }
+}
+
+.controls button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.controls button:hover {
+    background-color: #2980b9;
+}
+
+#dice-result {
+    font-size: 2rem;
+    margin-top: 10px;
+>>>>>>> 23e5706f14186228095042b6d215b949cc27eda1
 }
