@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfect 4-Player Ludo Board</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main-container">
+        
+        <!-- Ludo Board (15x15 Structure) -->
+        <div class="ludo-board">
+            
+            <!-- Red Home (Top Left) -->
+            <div class="home-zone red-zone">
+                <div class="inner-zone">
+                    <div class="pawn red-pawn" id="red-1" onclick="movePawn('red', 1)">R1</div>
+                    <div class="pawn red-pawn" id="red-2" onclick="movePawn('red', 2)">R2</div>
+                    <div class="pawn red-pawn" id="red-3" onclick="movePawn('red', 3)">R3</div>
+                    <div class="pawn red-pawn" id="red-4" onclick="movePawn('red', 4)">R4</div>
+                </div>
+            </div>
+
+            <!-- Top Path (Green Path Area) -->
+            <div class="path-vertical">
+                <div class="cell"></div><div class="cell"></div><div class="cell"></div>
+                <div class="cell"></div><div class="cell green-home-path"></div><div class="cell"></div>
+                <div class="cell"></div><div class="cell green-home-path"></div><div class="cell"></div>
+                <div class="cell"></div><div class="cell green-home-path"></div><div class="cell"></div>
+                <div class="cell"></div><div class="cell green-home-path"></div><div class="cell"></div>
+                <div class="cell"></div><div class="cell green-home-path"></div><div class="cell"></div>
+            </div>
+
+            <!-- Green Home (Top Right) -->
+            <div class="home-zone green-zone">
+                <div class="inner-zone">
+                    <div class="pawn green-pawn" id="green-1" onclick="movePawn('green', 1)">G1</div>
+                    <div class="pawn green-pawn" id="green-2" onclick="movePawn('green', 2)">G2</div>
+                    <div class="pawn green-pawn" id="green-3" onclick="movePawn('green', 3)">G3</div>
+                    <div class="pawn green-pawn" id="green-4" onclick="movePawn('green', 4)">G4</div>
+                </div>
+            </div>
+
+            <!-- Left Path (Red Path Area) -->
+            <div class="path-horizontal">
+                <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+                <div class="cell"></div><div class="cell red-home-path"></div><div class="cell red-home-path"></div><div class="cell red-home-path"></div><div class="cell red-home-path"></div><div class="cell red-home-path"></div>
+                <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+            </div>
+
+            <!-- Center Triangle Zone -->
+            <div class="center-zone">
+                <div class="triangle red-tri"></div>
+                <div class="triangle green-tri"></div>
+                <div class="triangle yellow-tri"></div>
+                <div class="triangle blue-tri"></div>
+            </div>
+
+            <!-- Right Path (Yellow Path Area) -->
+            <div class="path-horizontal">
+                <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+                <div class="cell yellow-home-path"></div><div class="cell yellow-home-path"></div><div class="cell yellow-home-path"></div><div class="cell yellow-home-path"></div><div class="cell yellow-home-path"></div><div class="cell"></div>
+                <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+            </div>
+
+            <!-- Blue Home (Bottom Left) -->
+            <div class="home-zone blue-zone">
+                <div class="inner-zone">
+                    <div class="pawn blue-pawn" id="blue-1" onclick="movePawn('blue', 1)">B1</div>
+                    <div class="pawn blue-pawn" id="blue-2" onclick="movePawn('blue', 2)">B2</div>
+                    <div class="pawn blue-pawn" id="blue-3" onclick="movePawn('blue', 3)">B3</div>
+                    <div class="pawn blue-pawn" id="blue-4" onclick="movePawn('blue', 4)">B4</div>
+                </div>
+            </div>
+
+            <!-- Bottom Path (Blue Path Area) -->
+            <div class="path-vertical">
+                <div class="cell"></div><div class="cell blue-home-path"></div><div class="cell"></div>
+                <div class="cell"></div><div class="cell blue-home-path"></div><div class="cell"></div>
+                <div class="cell"></div><div class="cell blue-home-path"></div><div class="cell"></div>
+                <div class="cell"></div><div class="cell blue-home-path"></div><div class="cell"></div>
+                <div class="cell"></div><div class="cell blue-home-path"></div><div class="cell"></div>
+                <div class="cell"></div><div class="cell"></div><div class="cell"></div>
+            </div>
+
+            <!-- Yellow Home (Bottom Right) -->
+            <div class="home-zone yellow-zone">
+                <div class="inner-zone">
+                    <div class="pawn yellow-pawn" id="yellow-1" onclick="movePawn('yellow', 1)">Y1</div>
+                    <div class="pawn yellow-pawn" id="yellow-2" onclick="movePawn('yellow', 2)">Y2</div>
+                    <div class="pawn yellow-pawn" id="yellow-3" onclick="movePawn('yellow', 3)">Y3</div>
+                    <div class="pawn yellow-pawn" id="yellow-4" onclick="movePawn('yellow', 4)">Y4</div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Dashboard Control -->
+        <div class="dashboard">
+            <h3>Turn: <span id="turn-title" style="color: #e74c3c;">Red</span></h3>
+            <div class="dice-box" id="dice-ui" onclick="rollDice()">🎲</div>
+            <div class="dice-number" id="dice-number-display">Number: -</div>
+            <p id="status-log">Roll the dice to start!</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JavaScript Events Demo</title>
+
+<style>
+body{
+    font-family: Arial;
+    background: linear-gradient(to right,#b9fbc0,#98f5e1);
+    text-align:center;
+}
+
+.container{
+    background:rgb(193, 220, 24);
+    width:400px;
+    margin:100px auto;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0px 0px 10px gray;
+}
+
+button{ 
+    background:#dfe7ee;
+    color:rgb(12, 226, 19);
+    border:none;                
+    padding:8px 12px;
+    margin:5px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#2d89ef;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2 id="heading">Sample Heading</h2>
+
+<input type="text" id="inputText" placeholder="Enter new heading">
+
+<br><br>
+
+<button onclick="changeHeading()">Change Heading</button>
+<button onclick="changeBackground()">Change Background</button>
+<button onclick="increaseFont()">Increase Font Size</button>
+<br>
+<button onclick="togglePara()">Show/Hide Paragraph</button>
+<button onclick="resetPage()">Reset</button>
+
+<p id="para">
+This is a sample paragraph. JavaScript events can dynamically change content.
+</p>
+
+</div>
+
+<script>
+
+function changeHeading(){
+    var text=document.getElementById("inputText").value;
+    document.getElementById("heading").innerHTML=text;
+}
+
+function changeBackground(){
+    document.body.style.background="lightblue";
+}
+
+function increaseFont(){
+    document.getElementById("para").style.fontSize="22px";
+}
+
+function togglePara(){
+    var p=document.getElementById("para");
+    if(p.style.display==="none"){
+        p.style.display="block";
+    }
+    else{
+        p.style.display="none";
+    }
+}
+
+function resetPage(){
+    location.reload();
+}
+
+</script>
+
+</body>
+</html>
+  

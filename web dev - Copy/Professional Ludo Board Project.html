@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!-- saved from url=(0117)file:///C:/Users/Rituraj%20kumar/OneDrive/Documents/ASTHA/web%20dev/web%20dev/web%20dev/web%20dev/ludoclone/ludo.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Ludo Board Project</title>
+    <link rel="stylesheet" href="./Professional Ludo Board Project_files/style.css">
+</head>
+<body>
+    <div class="main-container">
+        <!-- Ludo Board Structure -->
+        <div class="ludo-board">
+            
+            <!-- Red Home (Top Left) -->
+            <div class="home-zone red-zone">
+                <div class="inner-zone">
+                    
+                </div>
+            </div>
+
+            <!-- Top Path (Green Path area) -->
+            <div class="path-vertical">
+                <div class="cell"><div class="pawn red-pawn" id="red-1" onclick="movePawn(&#39;red&#39;)">R</div></div><div class="cell"></div><div class="cell"></div>
+                <div class="cell"></div><div class="cell green-home-path"></div><div class="cell"></div>
+                <div class="cell"></div><div class="cell green-home-path"></div><div class="cell"></div>
+                <div class="cell"></div><div class="cell green-home-path"></div><div class="cell"></div>
+                <div class="cell"></div><div class="cell green-home-path"></div><div class="cell"></div>
+                <div class="cell"></div><div class="cell green-home-path"></div><div class="cell"></div>
+            </div>
+
+            <!-- Green Home (Top Right) -->
+            <div class="home-zone green-zone">
+                <div class="inner-zone">
+                    <div class="pawn green-pawn" id="green-1" onclick="movePawn(&#39;green&#39;)">G</div>
+                </div>
+            </div>
+
+            <!-- Left Path (Red Path area) -->
+            <div class="path-horizontal">
+                <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+                <div class="cell"></div><div class="cell red-home-path"></div><div class="cell red-home-path"></div><div class="cell red-home-path"></div><div class="cell red-home-path"></div><div class="cell red-home-path"></div>
+                <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+            </div>
+
+            <!-- Center Triangle Zone -->
+            <div class="center-zone">
+                <div class="triangle red-tri"></div>
+                <div class="triangle green-tri"></div>
+                <div class="triangle yellow-tri"></div>
+                <div class="triangle blue-tri"></div>
+            </div>
+
+            <!-- Right Path (Yellow Path area) -->
+            <div class="path-horizontal">
+                <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+                <div class="cell yellow-home-path"></div><div class="cell yellow-home-path"></div><div class="cell yellow-home-path"></div><div class="cell yellow-home-path"></div><div class="cell yellow-home-path"></div><div class="cell"></div>
+                <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+            </div>
+
+            <!-- Blue Home (Bottom Left) -->
+            <div class="home-zone blue-zone">
+                <div class="inner-zone">
+                    <div class="pawn blue-pawn" id="blue-1">B</div>
+                </div>
+            </div>
+
+            <!-- Bottom Path (Blue Path area) -->
+            <div class="path-vertical">
+                <div class="cell"></div><div class="cell blue-home-path"></div><div class="cell"></div>
+                <div class="cell"></div><div class="cell blue-home-path"></div><div class="cell"></div>
+                <div class="cell"></div><div class="cell blue-home-path"></div><div class="cell"></div>
+                <div class="cell"></div><div class="cell blue-home-path"></div><div class="cell"></div>
+                <div class="cell"></div><div class="cell blue-home-path"></div><div class="cell"></div>
+                <div class="cell"></div><div class="cell"></div><div class="cell"></div>
+            </div>
+
+            <!-- Yellow Home (Bottom Right) -->
+            <div class="home-zone yellow-zone">
+                <div class="inner-zone">
+                    <div class="pawn yellow-pawn" id="yellow-1">Y</div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Dashboard Control -->
+        <div class="dashboard">
+            <h3>Turn: <span id="turn-title" style="color: rgb(231, 76, 60);">Red</span></h3>
+            <div class="dice-box" id="dice-ui" onclick="rollDice()">⚄</div>
+            <p id="status-log">Roll the dice!</p>
+        </div>
+    </div>
+    <script src="./Professional Ludo Board Project_files/script.js"></script>
+
+</body></html>

@@ -3,243 +3,380 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PhonePe Pro Clone</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <title>PhonePe Clone</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>           
-<body>   
+    <style>
+        /* --- 1. RESET & BASIC STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', 'Arial', sans-serif;
+        }
 
-    <div class="top-nav">
-        <div class="left">
-            <div class="profile-pic">JS</div>
-            <div class="address">
-                <p class="add-title">Add Address <i class="fas fa-chevron-down"></i></p>
+        body {
+            background-color: #f1f3f6; /* Light Grey Background */
+            padding-bottom: 80px; /* Bottom Nav Space */
+        }
+
+        /* --- 2. HEADER SECTION (PURPLE) --- */
+        .header {
+            background-color: #5f259f; /* PhonePe Purple */
+            padding: 15px;
+            color: white;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            box-shadow: 0 4px 10px rgba(95, 37, 159, 0.3);
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .profile-pic {
+            width: 40px;
+            height: 40px;
+            background-color: #e0e0e0;
+            border-radius: 12px; /* Squircle shape */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #5f259f;
+            font-size: 20px;
+            border: 2px solid white;
+        }
+
+        .location {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .location strong {
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .location span {
+            font-size: 11px;
+            opacity: 0.8;
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .header-icons i {
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        /* --- 3. CAROUSEL (BANNER SLIDER) --- */
+        .slider-container {
+            margin-top: 15px;
+            padding: 0 10px;
+            overflow-x: auto;
+            display: flex;
+            gap: 10px;
+            scrollbar-width: none; /* Hide Scrollbar */
+        }
+        .slider-container::-webkit-scrollbar { display: none; }
+
+        .slider-img {
+            min-width: 300px;
+            height: 140px;
+            border-radius: 10px;
+            object-fit: cover;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* --- 4. SECTIONS (CARD STYLE) --- */
+        .card-section {
+            background: white;
+            margin: 10px;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .section-title {
+            font-size: 15px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        /* Transfer Money Grid */
+        .transfer-grid {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .transfer-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 25%;
+            cursor: pointer;
+        }
+
+        .icon-circle {
+            width: 45px;
+            height: 45px;
+            background-color: #5f259f; /* Purple Circle */
+            border-radius: 15px; /* Squircle */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            margin-bottom: 8px;
+            transition: transform 0.2s;
+        }
+        
+        .transfer-item:hover .icon-circle {
+            transform: scale(1.1);
+        }
+
+        .icon-label {
+            font-size: 11px;
+            text-align: center;
+            color: #333;
+            line-height: 1.2;
+        }
+
+        /* Recharge Grid */
+        .recharge-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .recharge-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .recharge-icon {
+            font-size: 24px;
+            margin-bottom: 8px;
+            color: #5f259f; /* Icon Color */
+        }
+
+        /* Wallet Row */
+        .wallet-row {
+            display: flex;
+            background: #f0f4ff; /* Light Blue tint */
+            padding: 10px;
+            border-radius: 8px;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px;
+        }
+        .wallet-text {
+            font-size: 13px;
+            font-weight: bold;
+            color: #333;
+        }
+        .wallet-sub {
+            font-size: 11px;
+            color: #666;
+        }
+
+        /* --- 5. BOTTOM NAVIGATION --- */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: white;
+            border-top: 1px solid #ddd;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            z-index: 1000;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #888;
+            font-size: 10px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .nav-item i {
+            font-size: 20px;
+            margin-bottom: 4px;
+        }
+
+        .nav-item.active {
+            color: #5f259f;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-top">
+            <div class="user-info">
+                <div class="profile-pic">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                <div class="location">
+                    <strong>Add Address <i class="fa-solid fa-caret-down"></i></strong>
+                    <span>Gurugram, India</span>
+                </div>
+            </div>
+            <div class="header-icons">
+                <i class="fa-solid fa-qrcode"></i>
+                <i class="fa-solid fa-bell"></i>
+                <i class="fa-regular fa-circle-question"></i>
             </div>
         </div>
-        <div class="right-icons">
-            <i class="fa-solid fa-qrcode"></i>
-            <i class="fa-solid fa-bell"></i>
-            <i class="fa-solid fa-circle-question"></i>
+    </header>
+
+    <div class="slider-container">
+        <img src="https://images.unsplash.com/photo-1607083206968-13611e3d76db?w=500&auto=format&fit=crop&q=60" class="slider-img">
+        <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=500&auto=format&fit=crop&q=60" class="slider-img">
+        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?w=500&auto=format&fit=crop&q=60" class="slider-img">
+    </div>
+
+    <div class="wallet-row">
+        <div>
+            <div class="wallet-text">PhonePe Wallet</div>
+            <div class="wallet-sub">Topup & Use</div>
+        </div>
+        <div class="wallet-text">Active</div>
+    </div>
+
+    <div class="card-section">
+        <div class="section-title">Transfer Money</div>
+        <div class="transfer-grid">
+            <div class="transfer-item">
+                <div class="icon-circle">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                <span class="icon-label">To Mobile<br>Number</span>
+            </div>
+            <div class="transfer-item">
+                <div class="icon-circle">
+                    <i class="fa-solid fa-building-columns"></i>
+                </div>
+                <span class="icon-label">To Bank/<br>UPI ID</span>
+            </div>
+            <div class="transfer-item">
+                <div class="icon-circle">
+                    <i class="fa-solid fa-arrow-rotate-left"></i>
+                </div>
+                <span class="icon-label">To Self<br>Account</span>
+            </div>
+            <div class="transfer-item">
+                <div class="icon-circle">
+                    <i class="fa-solid fa-building-columns"></i>
+                </div>
+                <span class="icon-label">Check<br>Balance</span>
+            </div>
         </div>
     </div>
 
-    <div class="container">
-        <div class="card">
-            <div class="card-header">
-                <h3>Transfer Money</h3>
+    <div class="card-section">
+        <div class="section-title">Recharge & Pay Bills</div>
+        <div class="recharge-grid">
+            <div class="recharge-item">
+                <i class="fa-solid fa-mobile-screen-button recharge-icon"></i>
+                <span class="icon-label">Mobile<br>Recharge</span>
             </div>
-            <div class="grid-4">
-                <div class="item">
-                    <div class="icon purple-bg"><i class="fa-solid fa-user"></i></div>
-                    <span>To Mobile Number</span>
-                </div>
-                <div class="item">
-                    <div class="icon purple-bg"><i class="fa-solid fa-university"></i></div>
-                    <span>To Bank/ UPI ID</span>
-                </div>
-                <div class="item">
-                    <div class="icon purple-bg"><i class="fa-solid fa-history"></i></div>
-                    <span>To Self Account</span>
-                </div>
-                <div class="item">
-                    <div class="icon purple-bg"><i class="fa-solid fa-building-columns"></i></div>
-                    <span>Check Balance</span>
-                </div>
+            <div class="recharge-item">
+                <i class="fa-solid fa-satellite-dish recharge-icon"></i>
+                <span class="icon-label">DTH</span>
             </div>
-        </div>
-
-        <div class="action-row">
-            <div class="action-item"><i class="fa-solid fa-wallet"></i> PhonePe Wallet</div>
-            <div class="action-item"><i class="fa-solid fa-gift"></i> Rewards</div>
-            <div class="action-item"><i class="fa-solid fa-bullhorn"></i> Refer & Get ₹100</div>
-        </div>
-
-        <div class="card">
-            <div class="card-header">
-                <h3>Recharge & Pay Bills</h3>
-                <button class="view-all">View All</button>
+            <div class="recharge-item">
+                <i class="fa-regular fa-lightbulb recharge-icon"></i>
+                <span class="icon-label">Electricity</span>
             </div>
-            <div class="grid-4">
-                <div class="item">
-                    <div class="icon"><i class="fa-solid fa-mobile-screen-button text-purple"></i></div>
-                    <span>Mobile Recharge</span>
-                </div>
-                <div class="item">
-                    <div class="icon"><i class="fa-solid fa-satellite-dish text-purple"></i></div>
-                    <span>DTH</span>
-                </div>
-                <div class="item">
-                    <div class="icon"><i class="fa-solid fa-lightbulb text-purple"></i></div>
-                    <span>Electricity</span>
-                </div>
-                <div class="item">
-                    <div class="icon"><i class="fa-solid fa-house-chimney-window text-purple"></i></div>
-                    <span>Rent Payment</span>
-                </div>
+            <div class="recharge-item">
+                <i class="fa-regular fa-credit-card recharge-icon"></i>
+                <span class="icon-label">Credit Card<br>Bill</span>
+            </div>
+            <div class="recharge-item">
+                <i class="fa-solid fa-house-chimney recharge-icon"></i>
+                <span class="icon-label">Rent<br>Payment</span>
+            </div>
+            <div class="recharge-item">
+                <i class="fa-solid fa-hand-holding-dollar recharge-icon"></i>
+                <span class="icon-label">Loan<br>Repayment</span>
+            </div>
+            <div class="recharge-item">
+                <i class="fa-solid fa-gas-pump recharge-icon"></i>
+                <span class="icon-label">Cylinder<br>Booking</span>
+            </div>
+            <div class="recharge-item">
+                <i class="fa-solid fa-chevron-right recharge-icon"></i>
+                <span class="icon-label">See All</span>
             </div>
         </div>
     </div>
 
-    <div class="footer-nav">
-        <div class="f-item active"><i class="fa-solid fa-house"></i><span>Home</span></div>
-        <div class="f-item"><i class="fa-solid fa-store"></i><span>Stores</span></div>
-        <div class="f-item"><i class="fa-solid fa-shield-halved"></i><span>Insurance</span></div>
-        <div class="f-item"><i class="fa-solid fa-indian-rupee-sign"></i><span>Wealth</span></div>
-        <div class="f-item"><i class="fa-solid fa-arrow-right-arrow-left"></i><span>History</span></div>
+    <div class="card-section">
+        <div class="section-title">Sponsored Links</div>
+        <div class="recharge-grid">
+            <div class="recharge-item">
+                <i class="fa-brands fa-google-play recharge-icon" style="color:#ea4335;"></i>
+                <span class="icon-label">Google<br>Play</span>
+            </div>
+            <div class="recharge-item">
+                <i class="fa-solid fa-burger recharge-icon" style="color:#ff9800;"></i>
+                <span class="icon-label">Food<br>Order</span>
+            </div>
+            <div class="recharge-item">
+                <i class="fa-solid fa-train recharge-icon" style="color:#2196f3;"></i>
+                <span class="icon-label">Train<br>Tickets</span>
+            </div>
+            <div class="recharge-item">
+                <i class="fa-solid fa-bag-shopping recharge-icon" style="color:#e91e63;"></i>
+                <span class="icon-label">Shopping</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-nav">
+        <div class="nav-item active">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+        </div>
+        <div class="nav-item">
+            <i class="fa-solid fa-store"></i>
+            <span>Stores</span>
+        </div>
+        <div class="nav-item">
+            <i class="fa-solid fa-shield-heart"></i>
+            <span>Insurance</span>
+        </div>
+        <div class="nav-item">
+            <i class="fa-solid fa-indian-rupee-sign"></i>
+            <span>Wealth</span>
+        </div>
+        <div class="nav-item">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            <span>History</span>
+        </div>
     </div>
 
 </body>
 </html>
-:root {
-    --phonepe-purple: #5f259f;
-    --light-purple: #f1e9ff;
-    --bg-gray: #f5f6f7;
-    --text-main: #222;
-    --text-sub: #666;
-}
-
-body {
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    background-color: var(--bg-gray);
-    color: var(--text-main);
-}
-
-/* Custom Scrollbar hide */
-body::-webkit-scrollbar { display: none; }
-
-.top-nav {
-    background-color: var(--phonepe-purple);
-    color: white;
-    padding: 12px 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-.left { display: flex; align-items: center; gap: 12px; }
-
-.profile-pic {
-    width: 35px;
-    height: 35px;
-    background: #a374db;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-    border: 1.5px solid white;
-}
-
-.add-title { font-size: 13px; font-weight: 600; }
-
-.right-icons i { font-size: 18px; margin-left: 18px; cursor: pointer; }
-
-.container { padding: 8px; }
-
-.card {
-    background: white;
-    border-radius: 12px;
-    padding: 16px;
-    margin-bottom: 12px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-}
-
-.card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 16px;
-}
-
-.card-header h3 { font-size: 14px; font-weight: 600; }
-.view-all { 
-    background: var(--light-purple); 
-    border: none; 
-    color: var(--phonepe-purple);
-    padding: 4px 10px;
-    border-radius: 4px;
-    font-size: 11px;
-    font-weight: 600;
-}
-
-.grid-4 {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-}
-
-.item { text-align: center; cursor: pointer; }
-
-.item .icon {
-    font-size: 22px;
-    margin-bottom: 8px;
-    height: 45px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.purple-bg {
-    background-color: var(--phonepe-purple);
-    color: white;
-    border-radius: 12px;
-    width: 45px;
-    margin: 0 auto 8px;
-}
-
-.text-purple { color: var(--phonepe-purple); }
-
-.item span {
-    font-size: 10.5px;
-    display: block;
-    line-height: 1.2;
-    color: var(--text-main);
-    font-weight: 500;
-}
-
-.action-row {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 12px;
-}
-
-.action-item {
-    background: white;
-    padding: 10px;
-    border-radius: 8px;
-    font-size: 11px;
-    font-weight: 600;
-    flex: 1;
-    margin: 0 4px;
-    text-align: center;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-}
-
-.action-item i { color: var(--phonepe-purple); margin-right: 4px; }
-
-.footer-nav {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background: white;
-    display: flex;
-    border-top: 1px solid #eee;
-    padding: 8px 0;
-}
-
-.f-item {
-    flex: 1;
-    text-align: center;
-    color: #888;
-    transition: 0.3s;
-}
-
-.f-item i { font-size: 18px; display: block; margin-bottom: 4px; }
-.f-item span { font-size: 10px; font-weight: 500; }
-
-.f-item.active { color: var(--phonepe-purple); }

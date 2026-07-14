@@ -1,0 +1,193 @@
+body {
+    background-color: #2c3e50;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.main-container {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    background: #34495e;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Perfect 15x15 Matrix Layout for Ludo */
+.ludo-board {
+    width: 450px;
+    height: 450px;
+    background-color: #fff;
+    display: grid;
+    grid-template-columns: repeat(15, 1fr);
+    grid-template-rows: repeat(15, 1fr);
+    border: 5px solid #222;
+}
+
+/* Home Bases */
+.home-zone {
+    grid-column: span 6;
+    grid-row: span 6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.red-zone {
+    background-color: #e74c3c;
+}
+
+.green-zone {
+    background-color: #2ecc71;
+}
+
+.blue-zone {
+    background-color: #3498db;
+}
+
+.yellow-zone {
+    background-color: #f1c40f;
+}
+
+.inner-zone {
+    width: 100%;
+    height: 100%;
+    background: white;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Paths Grid Setup */
+.path-vertical {
+    grid-column: span 3;
+    grid-row: span 6;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+}
+
+.path-horizontal {
+    grid-column: span 6;
+    grid-row: span 3;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
+.cell {
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+}
+
+/* Colored Track Paths */
+.red-home-path {
+    background-color: #e74c3c;
+}
+
+.green-home-path {
+    background-color: #2ecc71;
+}
+
+.blue-home-path {
+    background-color: #3498db;
+}
+
+.yellow-home-path {
+    background-color: #f1c40f;
+}
+
+/* Center Home Triangle */
+.center-zone {
+    grid-column: span 3;
+    grid-row: span 3;
+    position: relative;
+    background: #eee;
+    border: 1px solid #333;
+}
+
+/* Pawns Style with Smooth Bounce Animation */
+.pawn {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    border: 2px solid white;
+    transition: all 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+.red-pawn {
+    background: #c0392b;
+}
+
+.green-pawn {
+    background: #27ae60;
+}
+
+.blue-pawn {
+    background: #2980b9;
+}
+
+.yellow-pawn {
+    background: #d35400;
+}
+
+/* Dice Design & Controls */
+.dashboard {
+    text-align: center;
+    color: white;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 10px;
+    width: 180px;
+}
+
+.dice-box {
+    font-size: 3.5rem;
+    background: white;
+    width: 70px;
+    height: 70px;
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.dice-shake {
+    animation: shake 0.4s ease;
+}
+
+@keyframes shake {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(20deg);
+    }
+
+    75% {
+        transform: rotate(-20deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}

@@ -1,0 +1,212 @@
+body {
+    background-color: #2c3e50;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.main-container {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    background: #34495e;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* Ludo 15x15 Matrix */
+.ludo-board {
+    width: 480px;
+    height: 480px;
+    background-color: #fff;
+    display: grid;
+    grid-template-columns: repeat(15, 1fr);
+    grid-template-rows: repeat(15, 1fr);
+    border: 6px solid #1a252f;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Home Boxes Setup */
+.home-zone {
+    grid-column: span 6;
+    grid-row: span 6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+.red-zone {
+    background-color: #e74c3c;
+}
+
+.green-zone {
+    background-color: #2ecc71;
+}
+
+.blue-zone {
+    background-color: #3498db;
+}
+
+.yellow-zone {
+    background-color: #f1c40f;
+}
+
+/* 2x2 Grid Grid Inside Home for 4 Pawns */
+.inner-zone {
+    width: 100%;
+    height: 100%;
+    background: white;
+    border-radius: 8px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    justify-items: center;
+    align-items: center;
+}
+
+/* Track Layouts */
+.path-vertical {
+    grid-column: span 3;
+    grid-row: span 6;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+}
+
+.path-horizontal {
+    grid-column: span 6;
+    grid-row: span 3;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
+.cell {
+    border: 1px solid #bdc3c7;
+    box-sizing: border-box;
+    background-color: #f8f9fa;
+}
+
+.red-home-path {
+    background-color: #e74c3c;
+}
+
+.green-home-path {
+    background-color: #2ecc71;
+}
+
+.blue-home-path {
+    background-color: #3498db;
+}
+
+.yellow-home-path {
+    background-color: #f1c40f;
+}
+
+/* Center Hub */
+.center-zone {
+    grid-column: span 3;
+    grid-row: span 3;
+    position: relative;
+    background: #ecf0f1;
+    border: 2px solid #2c3e50;
+}
+
+/* Pawns Style */
+.pawn {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    color: white;
+    font-weight: bold;
+    font-size: 0.75rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    border: 2px solid white;
+    transition: all 0.2s ease-in-out;
+}
+
+.pawn:hover {
+    transform: scale(1.15);
+}
+
+.red-pawn {
+    background: radial-gradient(circle, #ff6b6b, #c0392b);
+}
+
+.green-pawn {
+    background: radial-gradient(circle, #2ecc71, #27ae60);
+}
+
+.blue-pawn {
+    background: radial-gradient(circle, #54a0ff, #2980b9);
+}
+
+.yellow-pawn {
+    background: radial-gradient(circle, #f1c40f, #d35400);
+}
+
+/* Dashboard Display */
+.dashboard {
+    text-align: center;
+    color: white;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 25px;
+    border-radius: 12px;
+    width: 200px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dice-box {
+    font-size: 3.5rem;
+    background: white;
+    width: 80px;
+    height: 80px;
+    margin: 15px auto 5px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.dice-number {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #f39c12;
+}
+
+.dice-shake {
+    animation: shake 0.4s ease;
+}
+
+@keyframes shake {
+    0% {
+        transform: rotate(0deg) scale(0.9);
+    }
+
+    25% {
+        transform: rotate(25deg);
+    }
+
+    75% {
+        transform: rotate(-25deg);
+    }
+
+    100% {
+        transform: rotate(0deg) scale(1);
+    }
+}
