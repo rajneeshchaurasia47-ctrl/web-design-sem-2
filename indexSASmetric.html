@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaaSMetrics - Premium Enterprise Platform</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --accent: #38bdf8;
+            --text-muted: #64748b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        /* NAVBAR STYLING */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .logo span { color: var(--primary); }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links li a {
+            padding: 0 20px;
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links li a:hover { color: var(--primary); }
+
+        .btn-nav {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-nav:hover { background: var(--primary-hover); }
+
+        /* HAMBURGER MENU FOR MOBILE */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--dark);
+            transition: 0.3s;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            display: flex;
+            align-items: center;
+            padding: 100px 8%;
+            gap: 50px;
+            min-height: 85vh;
+        }
+
+        .hero-content { flex: 1; }
+
+        .hero-content h1 {
+            font-size: 48px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .btn-hero {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-hero:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+
+        .hero-mockup {
+            flex: 1;
+            background: linear-gradient(135deg, #e0f2fe, #dbeafe);
+            height: 400px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .mock-box {
+            background: #fff;
+            padding: 30px 50px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* FEATURES SECTION */
+        .features {
+            padding: 80px 8%;
+            text-align: center;
+            background: #fff;
+        }
+
+        .features h2 { margin-bottom: 50px; font-size: 36px; }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--light);
+            padding: 40px 30px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            transition: 0.3s;
+            text-align: left;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            border-color: var(--primary);
+        }
+
+        .card h3 { margin-bottom: 15px; font-size: 20px; }
+        .card p { color: var(--text-muted); font-size: 15px; line-height: 1.6; }
+
+        /* PRICING SECTION WITH SWITCH TOGGLE */
+        .pricing {
+            padding: 80px 8%;
+            text-align: center;
+        }
+
+        .pricing h2 { margin-bottom: 20px; font-size: 36px; }
+        .pricing p.subtitle { color: var(--text-muted); margin-bottom: 30px; }
+
+        /* Toggle Button Container */
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 50px;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .switch input { opacity: 0; width: 0; height: 0; }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #cbd5e1;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px; width: 26px;
+            left: 4px; bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider { background-color: var(--primary); }
+        input:checked + .slider:before { transform: translateX(26px); }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            align-items: center;
+        }
+
+        .price-card {
+            background: #fff;
+            padding: 40px 30px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            position: relative;
+            transition: 0.3s ease;
+        }
+
+        .price-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.05); }
+
+        .price-card.featured {
+            background: var(--dark);
+            color: #fff;
+            border: 2px solid var(--primary);
+            padding: 50px 30px;
+        }
+
+        .badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .price-card h3 { font-size: 20px; margin-bottom: 15px; }
+        .price { font-size: 44px; font-weight: 700; margin-bottom: 25px; }
+        .price span { font-size: 16px; font-weight: 400; color: var(--text-muted); }
+        .price-card.featured .price span { color: #94a3b8; }
+
+        .price-card ul { list-style: none; margin-bottom: 35px; text-align: left; }
+        .price-card ul li { margin-bottom: 12px; font-size: 15px; padding-left: 25px; position: relative; }
+        .price-card ul li::before { content: "✓"; position: absolute; left: 0; color: var(--primary); font-weight: bold; }
+
+        .btn-price, .btn-price-outline {
+            width: 100%;
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-price { background: var(--primary); color: #fff; border: none; }
+        .btn-price:hover { background: var(--primary-hover); }
+
+        .btn-price-outline { background: transparent; color: var(--primary); border: 2px solid var(--primary); }
+        .btn-price-outline:hover { background: var(--primary); color: #fff; }
+
+        /* FOOTER SECTION */
+        .footer {
+            background: var(--dark);
+            color: #94a3b8;
+            padding: 60px 8% 30px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-brand { color: #fff; font-size: 24px; font-weight: 700; }
+        .footer-brand span { color: var(--primary); }
+        .footer-content p { max-width: 400px; font-size: 15px; }
+        .footer-divider { border: 0; border-top: 1px solid #334155; margin: 40px 0 20px; }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            font-size: 14px;
+        }
+
+        .footer-links a { color: #94a3b8; text-decoration: none; margin-left: 20px; transition: 0.3s; }
+        .footer-links a:hover { color: #fff; }
+
+        /* RESPONSIVE BREAKPOINTS */
+        @media (max-width: 968px) {
+            .hero { flex-direction: column; text-align: center; padding: 60px 8%; }
+            .hero-mockup { width: 100%; height: 300px; }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle { display: flex; }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 74px; left: 0; width: 100%;
+                background: #fff;
+                padding: 20px;
+                box-shadow: 0 10px 10px rgba(0,0,0,0.05);
+                gap: 15px;
+            }
+            .nav-links.active { display: flex; }
+            .nav-links li a { padding: 10px 0; }
+            .footer-content, .footer-bottom { flex-direction: column; text-align: center; }
+            .footer-links a { margin: 0 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="logo">SaaS<span>Metrics</span></div>
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links" id="nav-list">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><button class="btn-nav">Start Free Trial</button></li>
+        </ul>
+    </nav>
+
+    <!-- HERO HEADER -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Optimize Your Business Analytics In Real-Time</h1>
+            <p>Scale your data infrastructure, track live performance metrics, and automate deep business processes with our highly scalable data engineering tools.</p>
+            <button class="btn-hero" onclick="location.href='#pricing'">Get Started Today</button>
+        </div>
+        <div class="hero-mockup">
+            <div class="mock-box">📊 Dynamic Data Pipelines Active</div>
+        </div>
+    </header>
+
+    <!-- FEATURES Grid -->
+    <section id="features" class="features">
+        <h2>Why Tech Leaders Trust Us</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Advanced Analytics</h3>
+                <p>Clean data visualization pipelines perfectly tuned for complex web infrastructure architectures.</p>
+            </div>
+            <div class="card">
+                <h3>Cloud Synchronicity</h3>
+                <p>Securely integrate multi-tenant database systems inside dynamic structures in seconds.</p>
+            </div>
+            <div class="card">
+                <h3>Automation Engine</h3>
+                <p>Eliminate processing bottlenecks using modern asynchronous background pipelines.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING TABLE WITH STATE TOGGLE -->
+    <section id="pricing" class="pricing">
+        <h2>Flexible Plans for Every Scale</h2>
+        <p class="subtitle">Save 20% by subscribing to our comprehensive annual data infrastructure contracts</p>
+        
+        <div class="toggle-container">
+            <span>Monthly</span>
+            <label class="switch">
+                <input type="checkbox" id="billing-toggle">
+                <span class="slider"></span>
+            </label>
+            <span>Yearly (Save 20%)</span>
+        </div>
+
+        <div class="pricing-grid">
+            <!-- Plan 1 -->
+            <div class="price-card">
+                <h3>Starter</h3>
+                <div class="price">$<span id="starter-price">29</span><span id="starter-duration">/mo</span></div>
+                <ul>
+                    <li>Basic Core Metrics</li>
+                    <li>5 Active Team Slots</li>
+                    <li>Weekly Automated Reports</li>
+                </ul>
+                <button class="btn-price-outline">Choose Starter</button>
+            </div>
+            
+            <!-- Plan 2 (Featured) -->
+            <div class="price-card featured">
+                <div class="badge">Most Popular</div>
+                <h3>Pro Plan</h3>
+                <div class="price">$<span id="pro-price">79</span><span id="pro-duration">/mo</span></div>
+                <ul>
+                    <li>Advanced Analytics Grid</li>
+                    <li>Unlimited Platform Slots</li>
+                    <li>Real-Time Synchronization</li>
+                </ul>
+                <button class="btn-price">Choose Pro</button>
+            </div>
+            
+            <!-- Plan 3 -->
+            <div class="price-card">
+                <h3>Enterprise</h3>
+                <div class="price">$<span id="enterprise-price">149</span><span id="enterprise-duration">/mo</span></div>
+                <ul>
+                    <li>Custom Processing Pipelines</li>
+                    <li>24/7 Dedicated Support Engineers</li>
+                    <li>Full API Sandbox Access</li>
+                </ul>
+                <button class="btn-price-outline">Contact Sales</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">SaaS<span>Metrics</span></div>
+            <p>Empowering dynamic engineering teams with real-time analysis tools and modern responsive systems layout.</p>
+        </div>
+        <hr class="footer-divider">
+        <div class="footer-bottom">
+            <p>&copy; 2026 SaaSMetrics Inc. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE JAVASCRIPT LOGIC -->
+    <script>
+        // 1. Mobile Menu Toggle Logic
+        const menuToggle = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-list');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // 2. Dynamic Price State Switcher Logic
+        const toggleInput = document.getElementById('billing-toggle');
+        
+        // Price Objects
+        const prices = {
+            monthly: { starter: 29, pro: 79, enterprise: 149, unit: '/mo' },
+            yearly: { starter: 23, pro: 63, enterprise: 119, unit: '/yr' }
+        };
+
+        const starterPrice = document.getElementById('starter-price');
+        const proPrice = document.getElementById('pro-price');
+        const enterprisePrice = document.getElementById('enterprise-price');
+
+        const starterDuration = document.getElementById('starter-duration');
+        const proDuration = document.getElementById('pro-duration');
+        const enterpriseDuration = document.getElementById('enterprise-duration');
+
+        toggleInput.addEventListener('change', () => {
+            if (toggleInput.checked) {
+                // Apply Yearly Rates
+                starterPrice.textContent = prices.yearly.starter;
+                proPrice.textContent = prices.yearly.pro;
+                enterprisePrice.textContent = prices.yearly.enterprise;
+
+                starterDuration.textContent = prices.yearly.unit;
+                proDuration.textContent = prices.yearly.unit;
+                enterpriseDuration.textContent = prices.yearly.unit;
+            } else {
+                // Apply Monthly Rates
+                starterPrice.textContent = prices.monthly.starter;
+                proPrice.textContent = prices.monthly.pro;
+                enterprisePrice.textContent = prices.monthly.enterprise;
+
+                starterDuration.textContent = prices.monthly.unit;
+                proDuration.textContent = prices.monthly.unit;
+                enterpriseDuration.textContent = prices.monthly.unit;
+            }
+        });
+    </script>
+</body>
+</html>
