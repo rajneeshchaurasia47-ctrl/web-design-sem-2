@@ -1,0 +1,25 @@
+import React from 'react';
+
+function UserList() {
+  const users = [
+    { id: 101, name: 'Rahul', role: 'Developer' },
+    { id: 102, name: 'Anita', role: 'Designer' },
+    { id: 103, name: 'Amit', role: 'Manager' }
+  ];
+
+  return (
+    <div>
+      <h3>Team Members</h3>
+      <ul>
+        {users.map((user) => (
+          // Using user.id as the key is the best practice
+          <li key={user.id}>
+            <strong>{user.name}</strong> - {user.role}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export default UserList;
