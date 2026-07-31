@@ -1,38 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>React Props Example</title>
-
-<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-
+ <meta charset="UTF-8">
+ <title>Simple Navigation Menu</title>
+ <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
-<div id="root"></div>
-
-<script type="text/babel">
-
-function Welcome(props){
-   return <h2>Hello {props.name}</h2>;
-}
-
-function App(){
-   return(
-      <div>
-        <Welcome name="Rahul" />
-        <Welcome name="Anita" />
-        <Welcome name="Rohan" />
-      </div>
-   );
-}
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<App />);
-
-</script>
-
+ <!-- Block Example -->
+ <header>
+ My <span>Website</span> Navigation
+ </header>
+ <!-- Inline-block Example -->
+ <nav class="inline-block-menu">
+ <ul>
+ <li><a href="#">Home</a></li>
+ <li><a href="#">About</a></li>
+ <li><a href="#">Services</a></li>
+ <li><a href="#">Contact</a></li>
+ </ul>
+ </nav>
+ <!-- Float + Clear Example -->
+ <nav class="float-menu">
+ <ul>
+ <li><a href="#">Dashboard</a></li>
+ <li><a href="#">Profile</a></li>
+ <li><a href="#">Messages</a></li>
+ <li><a href="#">Logout</a></li>
+ </ul>
+ <div class="clear"></div>
+ </nav>
 </body>
 </html>
